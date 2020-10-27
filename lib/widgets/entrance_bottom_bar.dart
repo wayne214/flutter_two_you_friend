@@ -21,7 +21,8 @@ class Entrance extends StatefulWidget {
   _EntranceState createState() => _EntranceState();
 }
 
-class _EntranceState extends State<Entrance> {
+class _EntranceState extends State<Entrance>
+    with SingleTickerProviderStateMixin {
   int _indexNum = 0;
   UniLinksType _type = UniLinksType.string;
   StreamSubscription _sub;
@@ -38,6 +39,18 @@ class _EntranceState extends State<Entrance> {
 
   Future<void> initPlatformState() async {
     if (_type == UniLinksType.string) {}
+  }
+
+  void redirect(String link){
+    if(link == null){
+      return;
+    }
+    int indexNum = router.open(context, link);
+    if(indexNum > -1 && _indexNum != indexNum){
+      setState(() {
+        _indexNum = indexNum;
+      });
+    }
   }
 
   @override
@@ -62,7 +75,7 @@ class _EntranceState extends State<Entrance> {
           _getPagesWidget(2)
         ],
       ),
-      drawer: MenuDraw(),
+      drawer: MenuDraw(redirect),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
@@ -93,8 +106,8 @@ class _EntranceState extends State<Entrance> {
     );
   }
 
-  Widget _getPagesWidget(int index){
-    List<Widget> widgetList =[
+  Widget _getPagesWidget(int index) {
+    List<Widget> widgetList = [
       router.getPageByRouter('homepage'),
       Icon(Icons.directions_transit),
       router.getPageByRouter('userpage')
@@ -102,8 +115,10 @@ class _EntranceState extends State<Entrance> {
 
     return Offstage(
       offstage: _indexNum != index,
-      child: TickerMode(enabled: _indexNum == index,
-      child: widgetList[index],),
+      child: TickerMode(
+        enabled: _indexNum == index,
+        child: widgetList[index],
+      ),
     );
   }
 }

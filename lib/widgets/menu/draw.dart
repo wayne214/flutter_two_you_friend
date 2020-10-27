@@ -3,7 +3,9 @@ import 'package:two_you_friend/router.dart';
 
 class MenuDraw extends StatelessWidget {
 
-  const MenuDraw();
+  final Function redirect;
+
+  const MenuDraw(this.redirect);
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class MenuDraw extends StatelessWidget {
                 title: Text('推荐'),
                 onTap: (){
                   Navigator.pop(context);
+                  redirect('tyfapp://homepage');
                 },
               ),
               ListTile(
@@ -26,6 +29,7 @@ class MenuDraw extends StatelessWidget {
                 onTap: (){
                   Navigator.pop(context);
                   print('点击关注');
+                  Router().open(context, 'https://www.baidu.com');
                 },
               ),
               ListTile(
@@ -33,6 +37,7 @@ class MenuDraw extends StatelessWidget {
                 title: Text('我'),
                 onTap: (){
                   Navigator.pop(context);
+                  redirect('tyfapp://userpage');
                 },
               )
             ],

@@ -13,7 +13,17 @@ class CommonWebViewPage extends StatelessWidget{
     return WebviewScaffold(
       url: url,
       appBar: AppBar(
+        title: new Text('Widget webview'),
         backgroundColor: Colors.blue,
+      ),
+      withZoom: true,
+      withLocalStorage: true,
+      hidden: true,
+      initialChild: Container(
+        color: Colors.redAccent,
+        child: const Center(
+          child: Text('Waiting...'),
+        ),
       ),
     );
   }
