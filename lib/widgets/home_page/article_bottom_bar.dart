@@ -15,7 +15,7 @@ class ArticleBottomBar extends StatelessWidget {
       {Key key, this.nickName, this.avatarImage, this.commentCount})
       : super(key: key);
 
-  Widget getUserInfo() {
+  Widget getUserWidget() {
     return Row(
       children: <Widget>[
         ClipRRect(
@@ -36,13 +36,13 @@ class ArticleBottomBar extends StatelessWidget {
     );
   }
 
-  Widget getCommentInfo() {
+  Widget getCommentWidget() {
     return Row(
       children: <Widget>[
         Icon(
           Icons.comment,
           color: Colors.grey,
-          size: 10,
+          size: 18,
         ),
         Padding(
           padding: EdgeInsets.only(left: 10),
@@ -61,11 +61,11 @@ class ArticleBottomBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Expanded(
-          child: getUserInfo(),
+          child: getUserWidget(),
           flex: 8,
         ),
         Expanded(
-          child: getCommentInfo(),
+          child: getCommentWidget(),
           flex: 2,
         )
       ],

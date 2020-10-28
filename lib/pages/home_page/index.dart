@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:two_you_friend/api/content/index.dart';
 import 'package:two_you_friend/utils/struct/content_detail.dart';
 
+import 'package:two_you_friend/widgets/home_page/article_card.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage();
 
@@ -28,7 +30,7 @@ class HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int position) {
-          return Text('hhhh');
+          return ArticleCard(articleInfo: contentList[position],);
         },
         separatorBuilder: (context, index) {
           return Divider(

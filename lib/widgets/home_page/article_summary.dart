@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:two_you_friend/styles/text_styles.dart';
-
+/// 帖子概要信息
+///
+/// 包括帖子的标题，帖子描述和帖子中的图片
 class ArticleSummary extends StatelessWidget {
   // 标题名称
   final String article;
