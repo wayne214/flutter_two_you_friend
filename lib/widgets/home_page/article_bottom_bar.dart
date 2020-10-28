@@ -38,6 +38,7 @@ class ArticleBottomBar extends StatelessWidget {
 
   Widget getCommentWidget() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Icon(
           Icons.comment,
@@ -47,9 +48,11 @@ class ArticleBottomBar extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 10),
         ),
-        Text(
-          '$commentCount',
-          style: TextStyles.commonStyle(),
+        Expanded(
+          child: Text(
+            '$commentCount',
+            style: TextStyles.commonStyle(),
+          ),
         )
       ],
     );
@@ -62,11 +65,11 @@ class ArticleBottomBar extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: getUserWidget(),
-          flex: 8,
+          flex: 7,
         ),
         Expanded(
           child: getCommentWidget(),
-          flex: 2,
+          flex: 3,
         )
       ],
     );
